@@ -11,6 +11,7 @@ import { EditPageComponent } from './edit-page/components/edit-page.component';
 import { OrdersPageComponent } from './orders-page/orders-page.component';
 import { AuthGuardService } from "../shared/services/auth-guard.service";
 import { QuillModule } from 'ngx-quill'
+import { SearchPipe } from "../shared/pipes/search.pipe";
 
 @NgModule({
   declarations: [
@@ -19,26 +20,27 @@ import { QuillModule } from 'ngx-quill'
     AddPageComponent,
     DashboardPageComponent,
     EditPageComponent,
-    OrdersPageComponent
+    OrdersPageComponent,
+    SearchPipe,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    QuillModule.forRoot(),
-    RouterModule.forChild([
-      {
-        path: '', component: AdminLayoutComponent, children: [
-          {path: '', redirectTo: '/admin/login', pathMatch: 'full'},
-          {path: 'login', component: LoginPageComponent},
-          {path: 'dashboard', component: DashboardPageComponent, canActivate: [AuthGuardService]},
-          {path: 'add', component: AddPageComponent,  canActivate: [AuthGuardService]},
-          {path: 'orders', component: OrdersPageComponent,  canActivate: [AuthGuardService]},
-          {path: 'product/:id/edit', component: EditPageComponent,  canActivate: [AuthGuardService]}
-        ]
-      }
-    ])
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        QuillModule.forRoot(),
+        RouterModule.forChild([
+            {
+                path: '', component: AdminLayoutComponent, children: [
+                    {path: '', redirectTo: '/admin/login', pathMatch: 'full'},
+                    {path: 'login', component: LoginPageComponent},
+                    {path: 'dashboard', component: DashboardPageComponent, canActivate: [AuthGuardService]},
+                    {path: 'add', component: AddPageComponent, canActivate: [AuthGuardService]},
+                    {path: 'orders', component: OrdersPageComponent, canActivate: [AuthGuardService]},
+                    {path: 'product/:id/edit', component: EditPageComponent, canActivate: [AuthGuardService]}
+                ]
+            }
+        ]),
+    ],
   exports: [
     RouterModule
   ]
