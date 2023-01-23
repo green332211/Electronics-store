@@ -9,6 +9,8 @@ import { ProductInterface } from "../interfaces/product.interface";
   providedIn: 'root'
 })
 export class ProductService {
+  type: string = 'Phone';
+  cartProducts: ProductInterface[] = [];
 
   constructor(private http: HttpClient) { }
 
@@ -56,5 +58,13 @@ export class ProductService {
 
   public updateProduct(product: ProductInterface) {
     return this.http.patch(`${environment.fbDbUrl}/products/${product.id}.json`, product);
+  }
+
+  public setType(type): void {
+    this.type = type;
+  }
+
+  public addProduct(product): void {
+    this.cartProducts.push(product);
   }
 }

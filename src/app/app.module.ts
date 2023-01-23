@@ -11,32 +11,36 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { QuillModule } from "ngx-quill";
 import { AuthInterceptorService } from "./shared/services/auth-interceptor.service";
 import { ProductComponent } from './product/components/product.component';
+import { SortingPipe } from './shared/pipes/sorting.pipe';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        MainLayoutComponent,
-        MainPageComponent,
-        ProductPageComponent,
-        CartPageComponent,
-        ProductComponent
-    ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        QuillModule.forRoot(),
-    ],
-    providers: [
-        {
-            provide: HTTP_INTERCEPTORS,
-            multi: true,
-            useClass: AuthInterceptorService
-        }
-    ],
-    exports: [
-    ],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    MainLayoutComponent,
+    MainPageComponent,
+    ProductPageComponent,
+    CartPageComponent,
+    ProductComponent,
+    SortingPipe
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    QuillModule.forRoot(),
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      multi: true,
+      useClass: AuthInterceptorService
+    }
+  ],
+  exports: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

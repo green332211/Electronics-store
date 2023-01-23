@@ -48,7 +48,6 @@ export class AddPageComponent implements OnInit {
       date: new Date(),
     }
 
-    console.log(this.form);
     this.productServ.create(product)
       .subscribe((res) => {
         this.form.reset();
